@@ -20,21 +20,17 @@ export default function Ordenador(props: Props) {
     <button
       className={classNames({
         [styles.ordenador]: true,
-        [styles["ordenador--ativo"]]: ordenador !== "",
+        [styles['ordenador--ativo']]: ordenador !== '',
       })}
       onClick={() => setAberto((prevState) => !prevState)}
       onBlur={() => setAberto(false)}
     >
-      <span>{nomeOrdenador || "Ordenar por"}</span>
-      {aberto ? (
-        <MdKeyboardArrowUp size={20} />
-      ) : (
-        <MdKeyboardArrowDown size={20} />
-      )}
+      <span>{nomeOrdenador || 'Ordenar por'}</span>
+      {aberto ? <MdKeyboardArrowUp size={20} /> : <MdKeyboardArrowDown size={20} />}
       <div
         className={classNames({
           [styles.ordenador__options]: true,
-          [styles["ordenador__options--ativo"]]: aberto,
+          [styles['ordenador__options--ativo']]: aberto,
         })}
       >
         {opcoes.map((opcao) => (
@@ -42,6 +38,9 @@ export default function Ordenador(props: Props) {
             className={styles.ordenador__option}
             key={opcao.value}
             onClick={() => setOrdenador(opcao.value)}
+            onKeyUp={({ key }) => key === 'Enter' && setOrdenador(opcao.value)}
+            role="button"
+            tabIndex={0}
           >
             {opcao.nome}
           </div>
