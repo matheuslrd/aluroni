@@ -1,0 +1,10 @@
+import React from 'react';
+
+export default function Inicio() {
+  return (
+    <section>
+      <h3>Recomendações da cozinha</h3>
+      <div>recomendações</div>
+    </section>
+  );
+}
